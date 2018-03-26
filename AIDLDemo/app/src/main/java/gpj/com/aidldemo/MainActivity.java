@@ -17,6 +17,12 @@ import android.widget.Button;
 import java.util.List;
 
 import gpj.com.aidldemo.bean.Book;
+import gpj.com.aidldemo.binderpool.BinderPoolHelper;
+import gpj.com.aidldemo.binderpool.BinderPoolImpl;
+import gpj.com.aidldemo.binderpool.ComputeImpl;
+import gpj.com.aidldemo.binderpool.ICompute;
+import gpj.com.aidldemo.binderpool.ISayHello;
+import gpj.com.aidldemo.binderpool.SayHelloImpl;
 
 
 public class MainActivity extends Activity {
@@ -26,6 +32,10 @@ public class MainActivity extends Activity {
 
     private Button mAddBookBtn;
     private Button mGetBookBtn;
+    private Button mBinderPoolBtn;
+
+    private ISayHello mSayHello;
+    private ICompute mCompute;
 
     private IBookManager mBookManager;
     private Handler mHandler = new MyHandler();
@@ -67,6 +77,7 @@ public class MainActivity extends Activity {
     void initView() {
         mAddBookBtn = findViewById(R.id.add_book_btn);
         mGetBookBtn = findViewById(R.id.get_book_btn);
+        mBinderPoolBtn = findViewById(R.id.binder_pool_btn);
     }
 
     void initEvent() {
@@ -103,6 +114,19 @@ public class MainActivity extends Activity {
                 }).start();
             }
         });
+
+        mBinderPoolBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        binderPoolWork();
+                    }
+                }).start();
+            }
+        });
     }
 
     @Override
@@ -135,6 +159,33 @@ public class MainActivity extends Activity {
                     super.handleMessage(msg);
             }
 
+        }
+    }
+
+    private void binderPoolWork(){
+        BinderPoolHelper binderPoolHelper = BinderPoolHelper.getInsatance(this);
+
+        Log.d(TAG, "visit ISayHello");
+        IBinder helloBinder = binderPoolHelper.queryBinder(BinderPoolImpl.BINDER_SAY_HELLO);
+        mSayHello = SayHelloImpl.asInterface(helloBinder);
+        String msg = "helloworld";
+        Log.d("gpj",TAG+"content:" + msg);
+
+        try {
+            String rmsg = mSayHello.hello(msg);
+            Log.d("gpj",TAG+"ISayHello reply:" + rmsg);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
+        Log.d(TAG, "visit ICompute");
+        IBinder computeBinder = binderPoolHelper.queryBinder(BinderPoolImpl.BINDER_COMPUTE);
+        mCompute = ComputeImpl.asInterface(computeBinder);
+        try {
+            System.out.println("1+1=" + mCompute.add(1, 1));
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -23,6 +23,9 @@
         <service
             android:name=".RemoteService"
             android:process=":remote"/>
+        <service
+            android:name=".BinderPoolService"
+            android:process=":remote"/>
     </application>
 
 </manifest>

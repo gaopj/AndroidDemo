@@ -24,5 +24,11 @@
         android:layout_height="wrap_content"
         android:text="getBooks"/>
 
+    <Button
+        android:id="@+id/binder_pool_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="binderPool"/>
+
 
 </LinearLayout>
