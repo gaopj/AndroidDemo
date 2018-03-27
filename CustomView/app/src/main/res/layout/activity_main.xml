@@ -17,5 +17,14 @@
      android:paddingTop="20dp"
      android:background="#000000"
      app:circle_color="#823456"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+ <com.gpj.customview.view.HorizontalScrollView
+     android:id="@+id/container"
+     android:layout_width="wrap_content"
+     android:layout_height="match_parent" />
+</LinearLayout>
+
 
 </LinearLayout>

@@ -25,18 +25,16 @@ public class CircleView extends View {
         init();
     }
 
-    // 只在xml 中配置的调用该构造函数
     public CircleView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
-        mColor  = a.getColor(R.styleable.CircleView_circle_color,Color.YELLOW);
-        a.recycle();
+        this(context, attrs, 0);
         init();
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
+        mColor  = a.getColor(R.styleable.CircleView_circle_color,Color.YELLOW);
+        a.recycle();
         init();
     }
 
