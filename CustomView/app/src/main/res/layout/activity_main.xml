@@ -15,6 +15,7 @@
      android:layout_margin="20dp"
      android:paddingLeft="20dp"
      android:paddingTop="20dp"
-     android:background="#000000"/>
+     android:background="#000000"
+     app:circle_color="#823456"/>
 
 </LinearLayout>

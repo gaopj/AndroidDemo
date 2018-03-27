@@ -1,12 +1,15 @@
 package com.gpj.customview.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.gpj.customview.R;
 
 /**
  * Created by v-pigao on 3/27/2018.
@@ -22,16 +25,25 @@ public class CircleView extends View {
         init();
     }
 
+    // 只在xml 中配置的调用该构造函数
     public CircleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
+        mColor  = a.getColor(R.styleable.CircleView_circle_color,Color.YELLOW);
+        a.recycle();
         init();
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
         init();
     }
 
+   // AttributeSet attrs： 从xml中定义的参数
+   // int defStyleAttr ：主题中优先级最高的属性
+   // int defStyleRes  ： 优先级次之的内置于View的style
+   // Xml直接定义 > xml中style引用 > defStyleAttr > defStyleRes > theme直接定义
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
