@@ -19,7 +19,7 @@ public class Activity1 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_1);
         textView=findViewById(R.id.text);
-        textView.setText(TAG);
+        textView.setText(TAG+getIntent().getStringExtra("sid"));
     }
 
 }
