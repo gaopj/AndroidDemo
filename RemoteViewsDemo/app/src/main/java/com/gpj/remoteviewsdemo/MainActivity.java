@@ -5,15 +5,24 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Process;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RemoteViews;
+import android.widget.TextView;
+
+import static com.gpj.remoteviewsdemo.Activity2.EXTRA_REMOTE_VIEWS;
+import static com.gpj.remoteviewsdemo.Activity2.REMOTE_ACTION;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity-->";
@@ -29,7 +38,22 @@ public class MainActivity extends Activity {
 
     private Button mDefaultNotifyBtn;
     private Button mCustomNotifyBtn;
+    private Button mSimulateNotifyBtn;
+    private TextView mCurrentProcessTxt;
 
+
+    private LinearLayout mRemoteViewsContent;
+
+    private BroadcastReceiver mRemoteViewsReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            RemoteViews remoteViews = intent
+                    .getParcelableExtra(EXTRA_REMOTE_VIEWS);
+            if (remoteViews != null) {
+                updateUI(remoteViews);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +77,23 @@ public class MainActivity extends Activity {
         }
         initView();
         initEvent();
+
+        IntentFilter filter = new IntentFilter(REMOTE_ACTION);
+        registerReceiver(mRemoteViewsReceiver, filter);
     }
 
     void initView(){
         mDefaultNotifyBtn = findViewById(R.id.default_notify_btn);
         mCustomNotifyBtn = findViewById(R.id.custom_notify_btn);
+        mSimulateNotifyBtn = findViewById(R.id.simulate_notify_btn);
+        mCurrentProcessTxt = findViewById(R.id.current_process_txt);
+
+        mRemoteViewsContent =  findViewById(R.id.remote_views_content);
     }
 
     void initEvent(){
+        mCurrentProcessTxt.setText("current process:" + Process.myPid());
+
         mDefaultNotifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +150,27 @@ public class MainActivity extends Activity {
                 notificationManager.notify(mNotifyId, notification);
             }
         });
+
+        mSimulateNotifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity2.class);
+                startActivity(intent);
+            }
+        });
     }
 
+    private void updateUI(RemoteViews remoteViews) {
+//        View view = remoteViews.apply(this, mRemoteViewsContent);
+        int layoutId = getResources().getIdentifier("layout_simulated_notification", "layout", getPackageName());
+        View view = getLayoutInflater().inflate(layoutId, mRemoteViewsContent, false);
+        remoteViews.reapply(this, view);
+        mRemoteViewsContent.addView(view);
+    }
 
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mRemoteViewsReceiver);
+        super.onDestroy();
+    }
 }
