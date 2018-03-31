@@ -1,7 +1,8 @@
-package gpj.com.imageloaderdemo;
+package gpj.com.imageloaderdemo.loader;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -23,6 +24,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import gpj.com.imageloaderdemo.R;
+
 /**
  * Created by gpj on 2018/3/30.
  */
@@ -38,7 +41,7 @@ public class ImageLoader {
     private static final int MAXIMUM_POOL_SIZE = CUP_COUNT * 2 + 1;//最大线程数
     private static final long KEEP_ALIVE_TIME = 10L; //非核心线程闲置时的超时时长（秒）
 
-    private static final int TAG_KEY_URI = 999; //用于给imageView设置uri标签，方便复用
+    private static final int TAG_KEY_URI = R.id.imageloader_uri; //用于给imageView设置uri标签，方便复用
     private static final int IO_BUFFER_SIZE = 8 * 1024; //设置io流缓存大小（byte）
 
     private boolean mIsDiskLruCacheCreate = false; //磁盘缓存是否创建完毕
@@ -113,6 +116,7 @@ public class ImageLoader {
         imageView.setTag(TAG_KEY_URI, uri);
         Bitmap bitmap = loadBitmapFromMemCache(uri);
         if (bitmap != null) {
+            Log.d(TAG, "loadBitmapFromMemCache,url:" + uri);
             imageView.setImageBitmap(bitmap);
             return;
         }
