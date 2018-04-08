@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button  mSnackbar;
     private Button mTextInputLayoutBtn;
+    private Button mTabInputLayoutBtn;
     private LinearLayout mActivityMain;
 
     private FloatingActionButton mFloatBtn;
@@ -47,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,TextInputLayoutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mTabInputLayoutBtn = findViewById(R.id.tabLayoutBtn);
+        mTabInputLayoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,TabLayoutActivity.class);
                 startActivity(intent);
             }
         });
