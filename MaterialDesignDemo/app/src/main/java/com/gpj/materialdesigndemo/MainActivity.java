@@ -1,5 +1,6 @@
 package com.gpj.materialdesigndemo;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button  mSnackbar;
+    private Button  mSnackbar;
+    private Button mTextInputLayoutBtn;
     private ConstraintLayout mActivityMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showSnackbar();
+            }
+        });
+
+        mTextInputLayoutBtn = findViewById(R.id.textInputLayoutBtn);
+        mTextInputLayoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,TextInputLayoutActivity.class);
+                startActivity(intent);
             }
         });
     }
