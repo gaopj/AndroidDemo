@@ -1,7 +1,9 @@
 package com.gpj.materialdesigndemo;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,13 +24,14 @@ import java.util.List;
  * Created by v-pigao on 4/8/2018.
  */
 
-public class TabLayoutActivity extends AppCompatActivity {
+public class MaterialDesignActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private Toolbar mToolbar;
     private NavigationView navigationView;
+    private FloatingActionButton mFloatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,14 @@ public class TabLayoutActivity extends AppCompatActivity {
                     });
         }
         initViewPager();
+
+        mFloatingActionButton = findViewById(R.id.floatingActionButton);
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make( v, "点击成功", Snackbar.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
