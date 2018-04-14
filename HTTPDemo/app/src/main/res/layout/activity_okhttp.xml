@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    >
+        <Button
+            android:id="@+id/bt_send"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="get请求"
+            />
+        <Button
+            android:id="@+id/bt_postsend"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="post请求"
+            />
+        <Button
+            android:id="@+id/bt_sendfile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="发送文件"
+            />
+
+        <Button
+            android:id="@+id/bt_downfile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="下载文件"
+            />
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="取消请求"
+            />
+
+</LinearLayout>
