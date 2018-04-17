@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gpj.ontoucheventandscrollerdemo.MainActivity">
+
+<com.gpj.ontoucheventandscrollerdemo.ScrollLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_alignParentTop="true"
+    android:background="#ff3456">
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="拖我"
+        android:textSize="30sp"/>
+</com.gpj.ontoucheventandscrollerdemo.ScrollLayout>
+    <com.gpj.ontoucheventandscrollerdemo.ScrollerPager
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#ff0000"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="第一页" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#00ff00"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="第二页" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#0000ff"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="第三页" />
+
+        </LinearLayout>
+    </com.gpj.ontoucheventandscrollerdemo.ScrollerPager>
+
+</RelativeLayout>
