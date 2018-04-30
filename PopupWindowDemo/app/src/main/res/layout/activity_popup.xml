@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_popup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:text="Translate animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/translate_bt"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:text="Alpha Animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/alpha_bt"
+        android:layout_marginBottom="10dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:text="Scale Animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scale_bt"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:text="Rotate Animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rotate_bt"
+        android:layout_marginBottom="10dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+</LinearLayout>
