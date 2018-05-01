@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.gpj.contentproviderdemo.MainActivity">
+
+<EditText
+    android:id="@+id/nameText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="name"/>
+    <EditText
+        android:id="@+id/ageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="age"/>
+    <EditText
+        android:id="@+id/heightText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="height"/>
+    <EditText
+        android:id="@+id/idEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="idEntry"/>
+
+    <TextView
+        android:id="@+id/labelView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="labelView"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/displayView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="labelView"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add" />
+
+        <Button
+            android:id="@+id/queryAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="queryAll" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="clear" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/deleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="deleteAll" />
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
