@@ -74,13 +74,13 @@ public class ViewInjectUtils {
                 //若是EventBase修饰的注解，则需要注入事件监听
                 EventBase eventBase = annotationType.getAnnotation(EventBase.class);
                 if (eventBase != null) {
-                    //class name
+                    //class name （View.OnClickListener.class）
                     Class<?> listenerType = eventBase.listenerClass();
 
-                    //class method
+                    //class method （"setOnClickListener"）
                     String listenerSetter = eventBase.setListenerMethod();
 
-                    //callback method
+                    //callback method （"onClick"）
                     String methodName = eventBase.listenerCallback();
 
                     try {
