@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineChartView">
+        <!--线颜色-->
+        <attr name="line_color" format="color|reference"/>
+
+        <!--普通点颜色-->
+        <attr name="dot_normal_color" format="color|reference"/>
+
+        <!--选中点颜色-->
+        <attr name="dot_selected_color" format="color|reference"/>
+    </declare-styleable>
+</resources>
